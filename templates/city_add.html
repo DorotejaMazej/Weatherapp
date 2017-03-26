@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}City{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Report current weather</h2>
+
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{csrf_token}}">
+
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Weather</label>
+                    <textarea name="text" class="form-control" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+

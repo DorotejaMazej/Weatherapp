@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Berlin{% endblock title %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <div class="container">
+      <h3><strong>{{ berlin.name}}, {{ berlin.sys.country }}</strong></h3>
+      <hr>
+
+      <h1>{{ berlin.main.temp }}°C</h1>
+
+      <h5>{{ berlin.weather[0].main }}, {{ berlin.weather[0].description }}</h5>
+
+      <hr>
+
+      <p>Humidity: {{ berlin.main.humidity }} %</p>
+      <p>wind speed: {{ berlin.wind.speed }} km/h</p>
+      <p>pressure: {{ berlin.main.pressure }} mBar</p>
+
+  </div>
+</div>
+
+{% endblock content %}

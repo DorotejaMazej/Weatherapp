@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Data{% endblock title %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <div class="container">
+      <h3><strong>{{ data.name}}, {{ data.sys.country }}</strong></h3>
+      <hr>
+
+      <h1>{{ data.main.temp }}°C</h1>
+
+      <h5>{{ data.weather[0].main }}, {{ data.weather[0].description }}</h5>
+
+      <hr>
+
+      <p>Humidity: {{ data.main.humidity }} %</p>
+      <p>wind speed: {{ data.wind.speed }} km/h</p>
+      <p>pressure: {{ data.main.pressure }} mBar</p>
+
+  </div>
+</div>
+
+{% endblock content %}

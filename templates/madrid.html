@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Madrid{% endblock title %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <div class="container">
+      <h3><strong>{{ madrid.name}}, {{ madrid.sys.country }}</strong></h3>
+      <hr>
+
+      <h1>{{ madrid.main.temp }}°C</h1>
+
+      <h5>{{ madrid.weather[0].main }}, {{ madrid.weather[0].description }}</h5>
+
+      <hr>
+
+      <p>Humidity: {{ madrid.main.humidity }} %</p>
+      <p>wind speed: {{ madrid.wind.speed }} km/h</p>
+      <p>pressure: {{ madrid.main.pressure }} mBar</p>
+
+  </div>
+</div>
+
+{% endblock content %}
