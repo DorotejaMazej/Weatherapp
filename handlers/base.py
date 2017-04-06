@@ -5,6 +5,7 @@ import jinja2
 import webapp2
 from google.appengine.api import users, memcache
 from models.city import City
+import time
 
 template_dir = os.path.join(os.path.dirname(__file__), "../templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -51,7 +52,10 @@ class MainHandler(BaseHandler):
     def get(self):
         cities = City.query(City.deleted == False).fetch()
 
-        params = {"cities": cities}
+        datum = time.strftime("%A, %d.%m")
+        cas = time.strftime("%H:%M %p")
+
+        params = {"cities": cities, "datum": datum, "cas": cas, }
 
         return self.render_template("main.html", params=params)
 
