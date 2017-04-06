@@ -7,16 +7,20 @@ from utils import secrets
 
 class WeatherHandler(BaseHandler):
     def post(self):
-
         city = self.request.get("city")
 
         url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric" + "&APPID=" + secrets.secrets()
 
+        nd_url = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&APPID=" + secrets.secrets()
+
+
         result = urlfetch.fetch(url)
+        zp = urlfetch.fetch(nd_url)
 
         data = json.loads(result.content)
+        forecast = json.loads(zp.content)
 
-        params = {"data": data}
+        params = {"data": data, "forecast": forecast}
 
         self.render_template("weather.html", params=params)
 
@@ -88,3 +92,4 @@ class LjubljanaWeather(BaseHandler):
         params = {"ljubljana": ljubljana}
 
         return self.render_template("ljubljana.html", params=params)
+
